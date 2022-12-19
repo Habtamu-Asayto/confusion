@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from "reactstrap";
 
-class DishDetail extends Component{
+class DishDetail extends Component {
     constructor(props) {
         super(props);
 
         console.log(props);
-        
+
         // stores iproperties of this component
         this.state = {
             selectedDishDetail: this.props.dsdetail
@@ -27,7 +27,7 @@ class DishDetail extends Component{
                             <CardText> {dish.description} </CardText>
                         </CardBody>
                     </Card>
-                </div>   
+                </div>
             );
         }
         else {
@@ -37,21 +37,22 @@ class DishDetail extends Component{
         }
     }
 
-    renderComments(comments){
+    renderComments(comments) {
         if (comments == null) {
             return (<div></div>)
         }
         const cmnts = comments.map(comment => {
             return (
+
                 <li key={comment.id}>
                     <p>{comment.comment}</p>
                     <p>-- {comment.author},
-                    &nbsp;
-                    {new Intl.DateTimeFormat('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: '2-digit'
-                    }).format(new Date(comment.date))}
+                        &nbsp;
+                        {new Intl.DateTimeFormat('en-US', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: '2-digit'
+                        }).format(new Date(comment.date))}
                     </p>
                 </li>
             )
@@ -68,11 +69,11 @@ class DishDetail extends Component{
     }
 
 
-    render(){
+    render() {
         const dish = this.props.dish
 
         console.log(dish);
-        
+
         if (dish == null) {
             return (<div></div>);
         }
@@ -81,9 +82,11 @@ class DishDetail extends Component{
         const dishComment = this.renderComments(dish.comments);
 
         return (
-            <div className='row'>
-                {dishItem}
-                {dishComment}
+            <div className="container">
+                <div className='row'>
+                    {dishItem}
+                    {dishComment}
+                </div>
             </div>
         )
     }
