@@ -26,7 +26,7 @@ const Menu = (props) => {
         <div className="container">
 
             <div className="row">
-                {menu}
+                {menu},
             </div>
         </div>
     );
